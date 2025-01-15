@@ -39,7 +39,7 @@ clear all
 	%-=-=-=-=-=-=-=-=-=-=-=-=-=
 	if			StageNumber	==	1
 		Temp		=	dir(	'Stage1_OutputFile'	);
-		nFr			=	length(Temp)-2;
+		nFr			=	length(Temp)-3;
 		nImage	=	1;
 		for	iFr	=	1:nFr
 			%-------------
@@ -87,7 +87,7 @@ clear all
 		Trans	=	Q_iImage(1:3);
 		Pose	=	Q_iImage(4:75);
 
-		%	EulerAngle ¨ Rodrigues Rotation
+		%	EulerAngle â†’ Rodrigues Rotation
 		Pose	=	Euler_Rodrigues(	Pose	);
 
 		[Vertex,	GrobalJoint	]	=	Get_Vertex(	Betas,	Pose,	Trans,...
@@ -129,14 +129,14 @@ clear all
 	AnimationProgram(	StickCood,	V_Point	);
 
 	%-------------------------------------------------
-	%--o—Íƒf[ƒ^‚Ì’†g(ƒ‰ƒ“ƒhƒ}[ƒN‚Ì3ŸŒ³À•W’l)
+	%--å‡ºåŠ›ãƒ‡ãƒ¼ã‚¿ã®ä¸­èº«(ãƒ©ãƒ³ãƒ‰ãƒãƒ¼ã‚¯ã®3æ¬¡å…ƒåº§æ¨™å€¤)
 	%-------------------------------------------------
-	%1:“ª’·,	2:•@,	3:‰E–Ú,	4:¶–Ú,	5:‰E¨,	6:¶¨,	7:‹¹œã‰,	8:‹¹œã‰Œã‚ë,
-	%9:‰EŒ¨‘O,	10:‰EŒ¨Œã,	11:‰E•IŠO,	12:‰E•I“à,	13:‰Eèñ“à,	14‰EèñŠO:,	15:‰Eè,
-	%16:¶Œ¨‘O,	17:¶Œ¨Œã,	18:¶•IŠO,	19:¶•I“à,	20:¶èñ“à,	21¶èñŠO:,	22:¶è,
-	%23:‰E•GŠO,	24:‰E•G“à,	25:‰E‘«ñŠO,	26:‰E‘«ñ“à,	27:‰EMPŠO,	28‰EMP“à:,	29:‰E‚Â‚Üæ,	30:‰Eæù
-	%31:‰E•GŠO,	32:‰E•G“à,	33:‰E‘«ñŠO,	34:‰E‘«ñ“à,	35:‰EMPŠO,	36‰EMP“à:,	37:‰E‚Â‚Üæ,	38:‰Eæù
-	%39:‚İ‚¼‚¨‚¿‘O,	40:‚İ‚¼‚¨‚¿Œã,	41:‰EŒÒŠÖß,	42:¶ŒÒŠÖß
+	%1:é ­é•·,	2:é¼»,	3:å³ç›®,	4:å·¦ç›®,	5:å³è€³,	6:å·¦è€³,	7:èƒ¸éª¨ä¸Šç¸,	8:èƒ¸éª¨ä¸Šç¸å¾Œã‚,
+	%9:å³è‚©å‰,	10:å³è‚©å¾Œ,	11:å³è‚˜å¤–,	12:å³è‚˜å†…,	13:å³æ‰‹é¦–å†…,	14å³æ‰‹é¦–å¤–:,	15:å³æ‰‹,
+	%16:å·¦è‚©å‰,	17:å·¦è‚©å¾Œ,	18:å·¦è‚˜å¤–,	19:å·¦è‚˜å†…,	20:å·¦æ‰‹é¦–å†…,	21å·¦æ‰‹é¦–å¤–:,	22:å·¦æ‰‹,
+	%23:å³è†å¤–,	24:å³è†å†…,	25:å³è¶³é¦–å¤–,	26:å³è¶³é¦–å†…,	27:å³MPå¤–,	28å³MPå†…:,	29:å³ã¤ã¾å…ˆ,	30:å³è¸µ
+	%31:å³è†å¤–,	32:å³è†å†…,	33:å³è¶³é¦–å¤–,	34:å³è¶³é¦–å†…,	35:å³MPå¤–,	36å³MPå†…:,	37:å³ã¤ã¾å…ˆ,	38:å³è¸µ
+	%39:ã¿ããŠã¡å‰,	40:ã¿ããŠã¡å¾Œ,	41:å³è‚¡é–¢ç¯€,	42:å·¦è‚¡é–¢ç¯€
 	dlmwrite(	'OutputData.csv',		OutPutData	)
 
 
@@ -571,7 +571,7 @@ Name	=	0;
 			Angle			=	PostureMatrix(iCam,4:6);
 			Ori				=	PostureMatrix(iCam,1:3)';
 
-			%-----X¨Y¨Z
+			%-----Xâ†’Yâ†’Z
 			for	i	=1:3
 				S(i)	=	sin(Angle(1,i));	C(i)	=	cos(Angle(1,i));
 				Axis(i)	=	Rotation(i);
@@ -819,7 +819,7 @@ function	STVIEW_3Dim(C_data,List,Obje,fps,dim)
 								'style',								'pushbutton',...
 								'position',							[465,1,80,40],...
 								'Visible',							'off',...
-								'string',								'¡',...
+								'string',								'â– ',...
 								'enable',								'off',...
 								'callback',							@bpause_callback,...
 								'tag',									'pause_b');
@@ -842,7 +842,7 @@ function	STVIEW_3Dim(C_data,List,Obje,fps,dim)
 								'style',								'pushbutton',...
 								'position',							[545,1,80,40],...
 								'Visible',							'off',...
-								'string',								'œ',...
+								'string',								'â—',...
 								'enable',								'on',...
 								'callback',							@brec_callback,...
 								'tag',									'rec_b');
@@ -963,18 +963,18 @@ function	STVIEW_3Dim(C_data,List,Obje,fps,dim)
 
 
 	%-------------------------------
-	%	•`‰æƒf[ƒ^ƒvƒƒpƒeƒB
+	%	æç”»ãƒ‡ãƒ¼ã‚¿ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 	%-------------------------------
 	pause on;
 	tic;
 
 	%------------------------------------
-	% --- startƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚é‚Ü‚Å‘Ò‹@
+	% --- startãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã‚‹ã¾ã§å¾…æ©Ÿ
 	%------------------------------------
 	waitfor(start_button,'enable','off');
 
 	%------------------------------------
-	% --- endƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚é‚Ü‚ÅŒJ‚è•Ô‚µ
+	% --- endãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã‚‹ã¾ã§ç¹°ã‚Šè¿”ã—
 	%------------------------------------
 	while get(end_button,'value')==1
 		start_time	=	toc	+	time_range(1);
@@ -989,13 +989,13 @@ function	STVIEW_3Dim(C_data,List,Obje,fps,dim)
 		while frame(iFr)<nFr
 
 			%--------------------------------------------------------
-			% --- endƒ{ƒ^ƒ“‚©radioƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚çƒ‹[ƒv‚ğ”²‚¯‚é
+			% --- endãƒœã‚¿ãƒ³ã‹radioãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‚‰ãƒ«ãƒ¼ãƒ—ã‚’æŠœã‘ã‚‹
 			%--------------------------------------------------------
 			if get(end_button,'value')	==	0
 				break;
 			end
 
-			%start_time¨‚±‚±‚Ü‚Å‚ÌŠÔ
+			%start_timeâ†’ã“ã“ã¾ã§ã®æ™‚é–“
 			time_inst	=	toc-start_time;
 			frm_chk		=	tim_seq<=time_inst;
 			frame			=	sum(frm_chk);
@@ -1092,7 +1092,7 @@ return
 function brec_callback(Dum1,Dum2)
 
 	%-------------------------------
-	%	Movieƒtƒ@ƒCƒ‹ì¬ƒvƒƒOƒ‰ƒ€
+	%	Movieãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆãƒ—ãƒ­ã‚°ãƒ©ãƒ 
 	%-------------------------------
 	fps_slider	=	findobj(gcf,'tag','fps_s');
 	frm_slider	=	findobj(gcf,'tag','frm_s');
@@ -1195,7 +1195,7 @@ function brec_callback(Dum1,Dum2)
 
 
 %=========================================
-%	endƒ{ƒ^ƒ“
+%	endãƒœã‚¿ãƒ³
 %=========================================
 function bend_callback(Dum1,Dum2)
 
@@ -1316,7 +1316,7 @@ function slider_move2(Dum1,Dum2);
 
 
 %=========================================
-%	pauseƒ{ƒ^ƒ“
+%	pauseãƒœã‚¿ãƒ³
 %=========================================
 function bpause_callback(Dum1,Dum2)
 
@@ -2151,7 +2151,7 @@ return
 function		[Camera_Cood]	=	Get_Grobal_CameraCood(Ori,Angle,Local_CamCood)
 
 	Rotation	=	[3,2,1];
-	%-----X¨Y¨Z
+	%-----Xâ†’Yâ†’Z
 	for	i	=1:3
 		S(i)		=	sin(Angle(1,i));	C(i)	=	cos(Angle(1,i));
 		Axis(i)	=	Rotation(i);
